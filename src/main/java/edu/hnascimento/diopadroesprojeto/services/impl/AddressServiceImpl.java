@@ -7,7 +7,6 @@ import edu.hnascimento.diopadroesprojeto.services.ViaCepService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.InvalidParameterException;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -22,7 +21,6 @@ public class AddressServiceImpl implements AddressService {
     public Optional<Address> findById(String cep){
 
         var addressDatabase = addressRepository.findByCep(cep);
-
         if (addressDatabase.isPresent()) {
             return addressDatabase;
         }

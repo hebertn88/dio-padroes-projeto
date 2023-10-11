@@ -16,11 +16,11 @@ public class AddressController {
     private AddressService addressService;
     @GetMapping("/{cep}")
     public ResponseEntity<Object> findByCep(@PathVariable String cep) {
-        try {
-            return ResponseEntity.ok(addressService.findById(cep));
-        } catch (Exception e) {
-            return ResponseEntity.ok().build();
-        }
+        var address = addressService.findById(cep);
 
+        if (address.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(address);
     }
 }

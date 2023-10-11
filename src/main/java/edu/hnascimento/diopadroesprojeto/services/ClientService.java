@@ -13,5 +13,5 @@ public interface ClientService {
 
     Optional<Client> update(Long id, Client client);
 
-    void delete(Long id);
+    Optional<Client> delete(Long id);
 }

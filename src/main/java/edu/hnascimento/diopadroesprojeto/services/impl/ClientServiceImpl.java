@@ -8,7 +8,6 @@ import edu.hnascimento.diopadroesprojeto.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.security.InvalidParameterException;
 import java.util.Objects;
 import java.util.Optional;
@@ -49,8 +48,10 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void delete(Long id) {
-        clientRepository.deleteById(id);
+    public Optional<Client> delete(Long id) {
+        var client = this.findById(id);
+        client.ifPresent((c) -> clientRepository.deleteById(c.getId()));
+        return client;
     }
 
     private Optional<Client> saveClientAndAddress(Client client) throws InvalidParameterException {
