@@ -1,5 +1,9 @@
 package edu.hnascimento.diopadroesprojeto.models;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -10,10 +14,15 @@ public class Address {
 
     @Id
     private String cep;
+    @JsonAlias(value = "logradouro")
     private String place;
+    @JsonAlias(value = "complemento")
     private String complement;
+    @JsonAlias(value = "bairro")
     private String district;
+    @JsonAlias(value = "localidade")
     private String location;
+    @JsonAlias(value = "uf")
     private String state;
     private String ibge;
     private String gia;

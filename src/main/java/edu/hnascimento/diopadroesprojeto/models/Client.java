@@ -1,6 +1,7 @@
 package edu.hnascimento.diopadroesprojeto.models;
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.ReadOnlyProperty;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -12,6 +13,7 @@ public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ReadOnlyProperty
     private Long id;
     private String name;
 
